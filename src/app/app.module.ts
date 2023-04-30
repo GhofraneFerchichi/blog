@@ -39,6 +39,7 @@ import { PostcommentComponent } from './front/postcomment/postcomment.component'
 import { PostManagmentComponent } from './admin/post-managment/post-managment.component';
 import { AddPostComponent } from './admin/post-managment/add-post/add-post.component';
 import { EditPostComponent } from './admin/post-managment/edit-post/edit-post.component';
+import { CommentManagmentComponent } from './front/comment-managment/comment-managment.component';
 
 
 
@@ -76,6 +77,7 @@ import { EditPostComponent } from './admin/post-managment/edit-post/edit-post.co
     PostManagmentComponent,
     AddPostComponent,
     EditPostComponent,
+    CommentManagmentComponent,
   ],
   imports: [
     BrowserModule,
