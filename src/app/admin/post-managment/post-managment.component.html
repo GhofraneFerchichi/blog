@@ -79,7 +79,7 @@
                                                 <button type="button" (click)="supprimer(p)"
                                                     class="btn btn-danger"><i class="fa fa-trash"></i> supprimer</button>
                                                     &nbsp;
-                                                    <button type="button" 
+                                                    <button type="button" [routerLink]="['editPost/', p.postId ]"
                                                     class="btn btn-warning"><i class="fa fa-pencil"></i> modifier</button>
                                             </td>
 

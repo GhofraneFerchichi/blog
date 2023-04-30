@@ -1,0 +1,117 @@
+<div class="wrapper " *ngIf="this.isReady==true">
+    <app-sidebar></app-sidebar>
+    <div class="main-panel">
+      <!-- Navbar -->
+      <app-nav></app-nav>
+      <!-- End Navbar -->
+      <div class="content">
+        <div class="row">
+  
+          <div class="col-md-12">
+            <div class="card card-user">
+              <div class="card-header">
+                <h5 class="card-title">New Post</h5>
+              </div>
+              <div class="card-body">
+                <div style="margin-left: 150px;margin-top: 50px;">
+                  <form [formGroup]="postform">
+                    <div class="mb-3">
+                      <label for="exampleFormControlInput1" class="form-label">title</label>
+                      <input type="email" class="form-control" id="exampleFormControlInput1" formControlName="title" >
+                      <label *ngIf="  postform.get('title')!.hasError('required')"
+                      for="float-input-invalid" style="color: red;"> <a style="font-weight: bold;">&#x2022;</a>required</label>
+                    
+                    </div>
+                    <br>
+                    <br>
+                    <div class="mb-3">
+                      <label for="exampleFormControlInput1" class="form-label">title</label>
+                      <input type="email" class="form-control" id="exampleFormControlInput1" formControlName="content" >
+                      <label *ngIf="  postform.get('content')!.hasError('required')"
+                      for="float-input-invalid"style="color: red;"> <a style="font-weight: bold;">&#x2022;</a>required</label>
+                    </div>
+                    <br>
+                    <br>
+  
+  
+                    <div class="mb-3">
+                      <label for="formFile" class="form-label">Upload your Image</label>
+                      <input class="form-control" type="file" id="formFile" (change)="selectFile($event);upload()" [disabled]="listfile!=null" >
+                      <div *ngIf="listfile===null" style="color: red;"><a style="font-weight: bold;">&#x2022;</a> required
+                        and name of
+                        image must be simple</div>
+                    </div>
+  
+                  </form>
+                  <button type="submit" class="btn btn-primary" (click)="modifier()"
+                    [disabled]="postform.invalid">modifier</button>
+                </div>
+  
+                
+                    <div class="content table-responsive table-full-width">
+                                <table class="table table-hover table-stripted">
+                                    <thead>
+                                        <th>
+                                            id
+                                        </th>
+                                        <th>
+                                            name
+                                        </th>
+                                        <th>
+                                            type
+                                        </th>
+                                    
+                                        <th>
+                                        <th>
+                                            Image </th>
+
+                                        <th>
+                                            options
+                                        </th>
+
+
+                                       
+
+                                    </thead>
+                                    <tbody>
+                                        <tr >
+                                            <td>
+                                                {{listfile?.id}}
+                                            </td>
+                                            <td>
+                                                {{listfile?.name}}
+                                            </td>
+                                            <td>
+                                                {{listfile?.type}}
+                                            </td>
+                                            <td>
+                                                <img width="150" height="150"
+                                                    src="http://localhost:8089/File/file/{{listfile?.id}}"
+                                                    alt=""></td>
+                            
+                                            <td>
+                                                
+                                            </td>
+                                            <td>
+
+                                                <button type="button" (click)="supprimer(listfile.id)"
+                                                    class="btn btn-danger"><i class="fa fa-trash"></i> supprimer</button>
+                                                    &nbsp;
+
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+               
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  </div>

@@ -16,10 +16,16 @@ export class PostServiceService {
   deletePostUrl="http://localhost:8089/post/deletepost";
   uploadfilef="http://localhost:8089/File/uploadf";
   getfiledetail="http://localhost:8089/File/filesdetail";
+  getfiledeposturl="http://localhost:8089/File/filesdearticle";
+  deletefiles="http://localhost:8089/File/delete-file";
   constructor(private http : HttpClient) { }
 
   getPost(): Observable<Post[]>{
     return this.http.get<Post[]>(`${this.getPostsurl}`);
+
+  }
+  getPostbyId(id:Number): Observable<Post>{
+    return this.http.get<Post>(`${this.getPostbyIdsurl}/${id}`);
 
   }
   ajoutPost(Post :Post): Observable<Post>{
@@ -33,6 +39,9 @@ export class PostServiceService {
     getFilesdetail(id:Number): Observable<FileDB> {
       return this.http.get<FileDB>(`${this.getfiledetail}/${id}`);
     }
+    getFilesdevoyage(id:Number): Observable<FileDB> {
+      return this.http.get<FileDB>(`${this.getfiledeposturl}/${id}`);
+    }
   updatePost(id:Number, Post:Post):Observable<Post>{
     return this.http.put<Post>(`${this.modifierPostUrl}/${id}`,Post);
   }
@@ -41,5 +50,8 @@ export class PostServiceService {
   }
   affecterfileaupost(id:Number,idf:Number,article :Post):Observable<Post>{
     return this.http.put<Post>("http://localhost:8089/File/affecter-fileToArticle/"+id+"/"+idf,article);
+  }
+  deletefile(id:Number,idp:Number): any{
+    return this.http.delete(`${this.deletefiles}/${id}/${idp}`);
   }
 }

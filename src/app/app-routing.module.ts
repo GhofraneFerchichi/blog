@@ -22,6 +22,7 @@ import {ListpostComponent} from "./admin/listpost/listpost.component";
 import {PostshowComponent} from "./front/postshow/postshow.component";
 import { AddPostComponent } from './admin/post-managment/add-post/add-post.component';
 import { PostManagmentComponent } from './admin/post-managment/post-managment.component';
+import { EditPostComponent } from './admin/post-managment/edit-post/edit-post.component';
 
 const routes: Routes = [
   { path: 'products/:id', component: SingleProductComponent },
@@ -50,6 +51,7 @@ const routes: Routes = [
  
   //Post Paths:
   { path: 'addPost', component: AddPostComponent },
+  { path: 'listPost/editPost/:id', component: EditPostComponent },
   { path: 'listPost', component: PostManagmentComponent },
   { path: 'showpost', component: PostshowComponent },
 

@@ -38,6 +38,7 @@ import { PostshowComponent } from './front/postshow/postshow.component';
 import { PostcommentComponent } from './front/postcomment/postcomment.component';
 import { PostManagmentComponent } from './admin/post-managment/post-managment.component';
 import { AddPostComponent } from './admin/post-managment/add-post/add-post.component';
+import { EditPostComponent } from './admin/post-managment/edit-post/edit-post.component';
 
 
 
@@ -74,6 +75,7 @@ import { AddPostComponent } from './admin/post-managment/add-post/add-post.compo
     PostcommentComponent,
     PostManagmentComponent,
     AddPostComponent,
+    EditPostComponent,
   ],
   imports: [
     BrowserModule,
