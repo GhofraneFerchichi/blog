@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="apple-touch-icon" sizes="76x76" href="../../../assets/admin/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="../../../assets/admin/img/favicon.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>
+    Edu </title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
+    name='viewport' />
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+  <!-- CSS Files -->
+
+  <link href="../../../assets/admin/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="../../../assets/admin/css/paper-dashboard.css" rel="stylesheet" />
+  <!-- CSS Just for demo purpose, don't include it in your project -->
+  <link href="../../../assets/admin/demo/demo.css" rel="stylesheet" />
+</head>
+
+<body class="">
+  <div class="wrapper ">
+    <app-sidebar></app-sidebar>
+    <div class="main-panel">
+      <!-- Navbar -->
+      <app-nav></app-nav>
+      <!-- End Navbar -->
+      <div class="content">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <h4 class="card-title" style="margin-left: 40%; font-size:xx-large; color: coral;"> Courses Management
+                </h4>
+              </div>
+              <div class="col-md-2">
+                <button type="button" routerLink="/addCourse" class="btn btn-outline-success"><i class="fa fa-plus"></i>
+                  New Course</button>
+
+              </div>
+
+              <div class="card-body">
+                <div *ngIf="show==true">
+                  <form [formGroup]="courseForm" class="ng-pristine ng-invalid ng-touched">
+
+                    <div class="row">
+                      <div class="col-md-6 pr-1">
+                        <div class="form-group">
+                          <label>Name</label>
+                          <input type="text" class="form-control" placeholder="Name" formControlName="name" id="name">
+                        </div>
+                      </div>
+                      <div class="col-md-6 pr-1">
+                        <div class="form-group">
+                          <label>Length </label>
+                          <input type="text" class="form-control" placeholder="Name" formControlName="length" id="name">
+
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div class="row">
+
+                      <div class="col-md-6 pr-1">
+                        <div class="form-group">
+                          <label>Course Language</label>
+                          <input type="text" class="form-control" placeholder="courseLanguage"
+                            formControlName="courseLanguage" id="courseLanguage">
+                        </div>
+                      </div>
+                      <div class="col-md-6 pr-1">
+                        <div class="form-group">
+                          <label>Education Level</label>
+                          <input type="text" class="form-control" placeholder="educationLevel"
+                            formControlName="educationLevel" id="educationLevel">
+                        </div>
+
+                      </div>
+                    </div>
+
+                    <button type="button" class="btn btn-primary" (click)="updateCourse()">Save changes</button>
+
+                  </form>
+                </div>
+                <br>
+                <div class="content table-responsive table-full-width">
+                  <table class="table table-hover table-stripted">
+                    <thead>
+                      <th>
+                        Name
+                      </th>
+                      <th>
+                        Language
+                      </th>
+                      <th>
+                        Created At
+                      </th>
+                      <th>
+                        Last Update </th>
+                      <th>
+                        Level
+                      </th>
+
+                      <th>Length</th>
+                      <th>Subject</th>
+                      <th>
+                        Options
+                      </th>
+
+
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let course of listCourse">
+                        <td>
+                          {{course?.name}}
+                        </td>
+                        <td>
+                          {{course?.courseLanguage}}
+                        </td>
+                        <td>
+                          {{course?.createdAt}}
+                        </td>
+                        <td>
+                          {{course?.updatedAt}}
+                        </td>
+                        <td>
+                          {{course?.educationLevel}}
+                        </td>
+                        <td>
+                          {{course?.length}}
+                        </td>
+                        <td>
+                          {{course?.courseSubject?.subjectCategory}}
+                        </td>
+                        <td>
+                          <button data-bs-toggle="modal" (click)="getCourseById(course?.idCourse)"
+                            data-bs-target="#exampleModal" class="btn btn-outline-info"><i class="fa fa-refresh"></i></button>
+                          &nbsp;
+                          <button type="button" (click)="deleteCourse(course.idCourse)"
+                            class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                        </td>
+
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-7">
+            <div class="card">
+              <div class="card-header">
+                <h4 class="card-title" style="margin-left: 40%; font-size:xx-large; color: coral;"> Subject Management
+                </h4>
+              </div>
+
+
+              <div class="card-body">
+
+                <br>
+                <div class="content table-responsive table-full-width">
+                  <table class="table table-hover table-stripted">
+                    <thead>
+                      <th>
+                        Logo
+                      </th>
+                     <!-- <th>
+                        ID
+                      </th>-->
+                      <th>
+                        Subject Name
+                      </th>
+
+                      <th>
+                        Options
+                      </th>
+
+
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let subject of subjects">
+                        <td><img  width="150" height="150" src="http://localhost:8082/libFile/files/{{subject?.idFile}}" alt=""></td>
+                       <!-- <td>
+                          {{subject?.idCourseSubject}}
+                        </td>-->
+                        <td>
+                          {{subject?.subjectCategory}}
+                        </td>
+
+
+                        <td>
+
+                          <button type="button" (click)="deleteSubject(subject?.idCourseSubject)"
+                            class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
+                        </td>
+
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="card">
+              <div class="card-body">
+                <form [formGroup]="subjectForm" class="ng-pristine ng-invalid ng-touched">
+
+                  <div class="row">
+
+                    <div class="col-md-12 pr-1">
+                      <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" class="form-control" placeholder="Name" formControlName="subjectCategory"
+                          id="name">
+                      </div>
+
+                    </div>
+                    <div class="col-md-12 pr-1">
+                      <div class="form-group">
+                        <label><a class="btn btn-warning" style="color: azure;">Upload Subject Logo</a> </label>
+                        <input type="file" placeholder="Name" (change)="onFileSelected($event)" id="name">
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="update ml-auto mr-auto">
+                      <button type="submit" (click)="saveSubject()" class="btn btn-primary btn-round"> <i class="fa fa-check"></i> Save
+                      </button>
+
+                    </div>
+                  </div>
+
+                </form>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Button trigger modal -->
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{course?.name}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="courseForm">
+
+            <div class="row">
+              <div class="col-md-6 pr-1">
+                <div class="form-group">
+                  <label>Name</label>
+                  <input type="text" class="form-control" placeholder="Name" formControlName="name" id="name">
+                </div>
+              </div>
+              <div class="col-md-6 pr-1">
+                <div class="form-group">
+                  <label>Length ...!</label>
+
+                </div>
+              </div>
+            </div>
+
+
+            <div class="row">
+
+              <div class="col-md-6 pr-1">
+                <div class="form-group">
+                  <label>Course Language</label>
+                  <input type="text" class="form-control" placeholder="courseLanguage" formControlName="courseLanguage"
+                    id="courseLanguage">
+                </div>
+              </div>
+              <div class="col-md-6 pr-1">
+                <div class="form-group">
+                  <label>Education Level</label>
+                  <input type="text" class="form-control" placeholder="educationLevel" formControlName="educationLevel"
+                    id="educationLevel">
+                </div>
+
+              </div>
+            </div>
+
+
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--   Core JS Files   -->
+  <script src="../../../assets/admin/js/core/jquery.min.js"></script>
+  <script src="../../../assets/admin/js/core/popper.min.js"></script>
+  <script src="../../../assets/admin/js/core/bootstrap.min.js"></script>
+  <script src="../../../assets/admin/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  <!--  Google Maps Plugin    -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+  <!-- Chart JS -->
+  <script src="../../../assets/admin/js/plugins/chartjs.min.js"></script>
+  <!--  Notifications Plugin    -->
+  <script src="../../../assets/admin/js/plugins/bootstrap-notify.js"></script>
+  <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="../../../assets/admin/js/paper-dashboard.min.js" type="text/javascript"></script>
+  <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
+  <script src="../../../assets/admin/demo/demo.js"></script>
+  <script>
+    $(document).ready(function () {
+      // Javascript method's body can be found in assets/assets-for-demo/js/demo.js
+      demo.initChartsPages();
+    });
+  </script>
+</body>
+
+</html>

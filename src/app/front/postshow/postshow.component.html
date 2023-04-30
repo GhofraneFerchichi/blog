@@ -1,0 +1,83 @@
+<app-navbar></app-navbar>
+<div class="content">
+  <div class="container">
+
+<!--
+<div class="card mb-4" style="margin-top: 25px; background-color: rgba(228, 240, 252, 0.8);" *ngFor="let post of listPosts ">
+  <img class="card-img-top" src="http://localhost:8082/libFile/files/{{post?.idFile}}" alt="Card image cap" style="width:70px; height: 70px; ">
+  <div class="card-body">
+    <h1 class="card-title" >{{post.title}} </h1>
+    <p class="card-text">
+      {{post.content}}
+    </p>
+    <div class="float-right">
+      <button class="btn btn-warning" (click)="onEdite(post.id)">Editer</button>
+      <button class="btn btn-danger" (click)="onDelete(post.id)">Supprimer</button>
+    </div>
+  </div>
+  <div class="card-footer text-muted">
+    Posted on {{post.created_at | date:'yyyy-MM-dd'}} by
+    <a >{{post.user.fname}}</a>
+    <div id="comment" style="height: 100px; overflow-y: auto;">
+      <ul class="list-group" style="position: relative; ">
+        <li class="list-group-item" *ngFor="let comment of post?.comments">
+          {{comment.content}}
+          <span class="text-right">
+            le <i class="text-info">{{comment.created_at | date}}</i> by {{comment.user.fname}}
+          </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>-->
+    <ol style="--length: 5" role="list" >
+
+
+      <li style="--i: 1" *ngFor="let post of listPosts " >
+        <img class="card-img-top" src="http://localhost:8082/libFile/files/{{post?.idFile}}" alt="Card image cap" style="width:70px; height: 70px; margin-left: 550px">
+        <h3 >
+          {{ post.title }}
+
+        </h3>
+        <p>
+
+          {{post.content}}</p>
+        <div class="float-right" style="margin-left: 350px;  float: bottom;">
+          <button class="btn btn-warning" (click)="onEdite(post.id)" >Editer</button>
+
+          <button class="btn btn-danger" (click)="onDelete(post.id)">Supprimer</button>
+        </div>
+
+        <h2>Comments</h2>
+        <ul>
+          <li *ngFor="let comment of comments">
+           <a style="color:#417fc0;"> Comment by : *Username*</a>
+            <br>
+
+         <a>{{comment.content}}</a></li>
+        </ul>
+      <!--  <form #comForm="ngForm" (ngSubmit)="comForm.form.valid && addPostcom()">
+          <div class="form-group">
+            <label for="comment">Add a comment</label>
+            <textarea class="form-control" name="comment" id="comment" rows="3" [(ngModel)]="comment.content"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>-->
+        <form [formGroup]="postForm">
+
+        <div class="form-group">
+          <label>Comments</label>
+          <input name="" class="form-control" id="" >
+            <option value="">add Comment</option>
+            <option *ngFor="let comment of comments" value="{{comment?.id}}">
+              {{comment.content}}</option>
+        </div>
+          <button type="submit" (click)="addPostcom()" class="btn btn-primary btn-round">Save
+            Prod</button>
+        </form>
+      </li>
+
+  </ol>
+  </div>
+</div>
+

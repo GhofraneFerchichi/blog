@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="apple-touch-icon" sizes="76x76" href="../../../assets/admin/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="../../../assets/admin/img/favicon.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>
+    El-Margoumino-Admin
+  </title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
+    name='viewport' />
+  <!--     Fonts and icons     -->
+
+</head>
+
+<body class="">
+  <div class="wrapper ">
+    <app-sidebar></app-sidebar>
+    <div class="main-panel">
+      <!-- Navbar -->
+      <app-nav></app-nav>
+      <!-- End Navbar -->
+      <div class="content">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <h4 class="card-title" style="margin-left: 40%; font-size:xx-large; color: coral;"> Lib List</h4>
+              </div>
+              <div class="col-md-2">
+                <button type="button" routerLink="/addlib" class="btn btn-outline-success"> <i class="fa fa-plus"></i>
+                  New Library</button>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead>
+                      <th>
+                        Name
+                      </th>
+                      <th>
+                        File Type </th>
+                      <th>
+                        Rating
+                      </th>
+                      <th>
+                        is Approved ?
+                      </th>
+                      <th>
+                        File Name
+                      </th>
+
+                      <th>
+                        Actions
+                      </th>
+
+
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let list of listLib">
+                        <td>
+                          {{list.name}}
+                        </td>
+                        <td>
+                          {{list.fileType}}
+                        </td>
+                        <td>
+                          {{list.rating}}
+                        </td>
+                        <td>
+                          <span *ngIf="list?.approved==true" class="badge badge-success">Public</span>
+                          <span *ngIf="list?.approved==false" class="badge badge-danger">Private</span>
+
+                        </td>
+                        <td>
+                          {{list.fileName}}
+                        </td>
+
+
+                        <td>
+                          <button type="button" routerLink="/updatelib" class="btn btn-outline-primary">Update</button>
+                          &nbsp;
+                          <button type="button" routerLink="/updatelib" class="btn btn-outline-danger">Delete</button>
+                        </td>
+                        <td>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--   Core JS Files   -->
+  <script src="assets/js/core/jquery.min.js"></script>
+  <script src="assets/js/core/popper.min.js"></script>
+  <script src="assets/js/core/bootstrap.min.js"></script>
+  <script src="assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  <!--  Google Maps Plugin    -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+  <!-- Chart JS -->
+  <script src="assets/js/plugins/chartjs.min.js"></script>
+  <!--  Notifications Plugin    -->
+  <script src="assets/js/plugins/bootstrap-notify.js"></script>
+  <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="assets/js/paper-dashboard.min.js" type="text/javascript"></script>
+  <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
+  <script src="assets/demo/demo.js"></script>
+</body>
+
+</html>
