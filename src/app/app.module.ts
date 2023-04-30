@@ -36,6 +36,9 @@ import { AddpostComponent } from './admin/addpost/addpost.component';
 import { ListpostComponent } from './admin/listpost/listpost.component';
 import { PostshowComponent } from './front/postshow/postshow.component';
 import { PostcommentComponent } from './front/postcomment/postcomment.component';
+import { PostManagmentComponent } from './admin/post-managment/post-managment.component';
+import { AddPostComponent } from './admin/post-managment/add-post/add-post.component';
+
 
 
 // @ts-ignore
@@ -69,6 +72,8 @@ import { PostcommentComponent } from './front/postcomment/postcomment.component'
     ListpostComponent,
     PostshowComponent,
     PostcommentComponent,
+    PostManagmentComponent,
+    AddPostComponent,
   ],
   imports: [
     BrowserModule,

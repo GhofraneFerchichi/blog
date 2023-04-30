@@ -1,19 +1,14 @@
 import { Product } from "./product";
 import {PostPayload} from "./post-payload";
+import { Post } from "./post";
+import { User } from "./user";
 
 export class Comment {
     id!: number;
 
-    idClient!: number;
 
     content!: string;
-  post: PostPayload;
+  post: Post;
 
-    likes!: number;
-
-    produit!: Product;
-
-    dateCreated!: Date;
-
-    lastUpdated!: Date;
+  user:User;
 }

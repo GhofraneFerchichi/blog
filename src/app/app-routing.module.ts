@@ -20,6 +20,8 @@ import { CourseListClientComponent } from './front/course-list-client/course-lis
 import {AddpostComponent} from "./admin/addpost/addpost.component";
 import {ListpostComponent} from "./admin/listpost/listpost.component";
 import {PostshowComponent} from "./front/postshow/postshow.component";
+import { AddPostComponent } from './admin/post-managment/add-post/add-post.component';
+import { PostManagmentComponent } from './admin/post-managment/post-managment.component';
 
 const routes: Routes = [
   { path: 'products/:id', component: SingleProductComponent },
@@ -47,8 +49,8 @@ const routes: Routes = [
   { path: 'updateCourse', component: UpdateCourseComponent },
  
   //Post Paths:
-  { path: 'addPost', component: AddpostComponent },
-  { path: 'listPost', component: ListpostComponent },
+  { path: 'addPost', component: AddPostComponent },
+  { path: 'listPost', component: PostManagmentComponent },
   { path: 'showpost', component: PostshowComponent },
 
   //{path:'favoriteProduct', component: WishListComponent},
