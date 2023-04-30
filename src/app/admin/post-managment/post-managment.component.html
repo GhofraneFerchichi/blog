@@ -1,1 +1,97 @@
-<p>post-managment works!</p>
+<div class="wrapper ">
+    <app-sidebar></app-sidebar>
+    <div class="main-panel">
+        <!-- Navbar -->
+        <app-nav></app-nav>
+        <!-- End Navbar -->
+        <div class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title" style="margin-left: 40%; font-size:xx-large; color: coral;"> Products
+                            </h4>
+                        </div>
+                        <div class="col-md-2">
+                            <button type="button" routerLink="/addPost" class="btn btn-outline-success"><i
+                                    class="fa fa-plus"></i>
+                                New post</button>
+
+                        </div>
+
+                        <div class="card-body">
+                            <br>
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-hover table-stripted">
+                                    <thead>
+                                        <th>
+                                            postId
+                                        </th>
+                                        <th>
+                                            title
+                                        </th>
+                                        <th>
+                                            content
+                                        </th>
+                                        <th>
+                                            date de publication
+                                         </th>
+
+                                        <th>
+                                        <th>
+                                            Image </th>
+
+                                        <th>
+                                            options
+                                        </th>
+
+
+                                       
+
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let p of listofpost">
+                                            <td>
+                                                {{p?.postId}}
+                                            </td>
+                                            <td>
+                                                {{p?.title}}
+                                            </td>
+                                            <td>
+                                                {{p?.content}}
+                                            </td>
+                                            <td>
+                                                {{p?.created_At}}
+                                            </td>
+                                            <td>
+                                                <img width="150" height="150"
+                                                    src="http://localhost:8089/File/file/{{p?.files?.id}}"
+                                                    alt=""></td>
+                            
+                                            <td>
+                                                
+                                            </td>
+                                            <td>
+                                                <button data-bs-toggle="modal" 
+                                                    data-bs-target="#exampleModal" class="btn btn-outline-info"><i
+                                                        class="fa fa-info"></i> afficher</button>
+                                                        &nbsp;
+                                                <button type="button" (click)="supprimer(p)"
+                                                    class="btn btn-danger"><i class="fa fa-trash"></i> supprimer</button>
+                                                    &nbsp;
+                                                    <button type="button" 
+                                                    class="btn btn-warning"><i class="fa fa-pencil"></i> modifier</button>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
