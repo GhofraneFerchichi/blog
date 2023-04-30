@@ -9,13 +9,13 @@ import { FileDB } from '../models/fileDB';
 })
 export class PostServiceService {
 
-  getPostsurl="http://localhost:8082/post/getAllpost";
-  getPostbyIdsurl="http://localhost:8082/post/getpost";
-  addPostUrl="http://localhost:8082/post/addPost";
-  modifierPostUrl="http://localhost:8082/post/updatepost";
-  deletePostUrl="http://localhost:8082/post/deletepost";
-  uploadfilef="http://localhost:8082/File/uploadf";
-  getfiledetail="/api/File/filesdetail";
+  getPostsurl="http://localhost:8089/post/getAllpost";
+  getPostbyIdsurl="http://localhost:8089/post/getpost";
+  addPostUrl="http://localhost:8089/post/addPost";
+  modifierPostUrl="http://localhost:8089/post/updatepost";
+  deletePostUrl="http://localhost:8089/post/deletepost";
+  uploadfilef="http://localhost:8089/File/uploadf";
+  getfiledetail="http://localhost:8089/File/filesdetail";
   constructor(private http : HttpClient) { }
 
   getPost(): Observable<Post[]>{
@@ -40,6 +40,6 @@ export class PostServiceService {
     return this.http.delete(`${this.deletePostUrl}/${id}`);
   }
   affecterfileaupost(id:Number,idf:Number,article :Post):Observable<Post>{
-    return this.http.put<Post>("http://localhost:8082/File/affecter-fileToArticle/"+id+"/"+idf,article);
+    return this.http.put<Post>("http://localhost:8089/File/affecter-fileToArticle/"+id+"/"+idf,article);
   }
 }
