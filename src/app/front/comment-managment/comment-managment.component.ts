@@ -9,16 +9,14 @@ import { PostServiceService } from 'src/app/services/post-service.service';
 })
 export class CommentManagmentComponent implements OnInit {
   listofpost:Post[];
-  nbrlike:Number[]
-  nbrdislike:Number[]
+  nbrlike:Number[]=[]
+  nbrdislike:Number[]=[]
   constructor(private ps:PostServiceService) { }
 
   ngOnInit(): void {
     this.getallpost();
   }
   getallpost(){
-    this.nbrlike=[]
-    this.nbrdislike=[]
     this.ps.getPost().subscribe(
       data=>{
         console.log(data)
@@ -43,7 +41,22 @@ export class CommentManagmentComponent implements OnInit {
   addlike(post:Post){
     this.ps.addlike(post.postId,1,post).subscribe(
       data=>{
-        
+
+          this.ps.getlike(post.postId).subscribe(
+            res=>{
+              console.log(this.nbrlike)
+              let index=this.listofpost.indexOf(post);
+              console.log(index)
+              this.nbrlike[index]=res;
+            }
+          )
+          this.ps.getdislike(post.postId).subscribe(
+            res=>{
+              let index=this.listofpost.indexOf(post);
+              this.nbrdislike[index]=res;
+
+            }
+          )
         }
     )
   }
@@ -52,6 +65,21 @@ export class CommentManagmentComponent implements OnInit {
     this.ps.addDislike(post.postId,1,post).subscribe(
       data=>{
 
+          this.ps.getdislike(post.postId).subscribe(
+            res=>{
+              let index=this.listofpost.indexOf(post);
+              this.nbrdislike[index]=res;
+
+            }
+          )
+          this.ps.getlike(post.postId).subscribe(
+            res=>{
+              console.log(this.nbrlike)
+              let index=this.listofpost.indexOf(post);
+              console.log(index)
+              this.nbrlike[index]=res;
+            }
+          )
         }
     )
   }
