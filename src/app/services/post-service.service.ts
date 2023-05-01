@@ -22,7 +22,10 @@ export class PostServiceService {
   addlikeurl="http://localhost:8089/post/addLike";
   adddislikeurl="http://localhost:8089/post/addDislike";
   nbrlikeurl="http://localhost:8089/post/nbrLike";;
-  nbrdislikeurl="http://localhost:8089/post/nbrDisLike";;
+  nbrdislikeurl="http://localhost:8089/post/nbrDisLike";
+  ///////////////////////////////////////////////////
+  addcommentaireurl="http://localhost:8089/api/comment/addcmt";
+  getcmtbypostsurl="http://localhost:8089/api/comment/getallcmtbypost";
   constructor(private http : HttpClient) { }
 
   getPost(): Observable<Post[]>{
@@ -72,6 +75,14 @@ export class PostServiceService {
   }
   getdislike(idp:Number): Observable<Number>{
     return this.http.get<Number>(`${this.nbrdislikeurl}/${idp}`);
+
+  }
+  ////////////////////////////////////////////:
+  addcomentaire(idp:Number, idu:Number,cmt:Comment):Observable<Comment>{
+    return this.http.post<Comment>(`${this.addcommentaireurl}/${idp}/${idu}`,cmt);
+  }
+  getcmtbypost(id:Number): Observable<Comment[]>{
+    return this.http.get<Comment[]>(`${this.getcmtbypostsurl}/${id}`);
 
   }
 }

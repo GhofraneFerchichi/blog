@@ -2,6 +2,7 @@ import { FileDB } from "./fileDB";
 import { PostDislike } from "./postDislike";
 import { Postlike } from "./postLike";
 import { User } from "./user";
+import { Comment } from "./comment"
 
 export class Post {
     postId:Number;

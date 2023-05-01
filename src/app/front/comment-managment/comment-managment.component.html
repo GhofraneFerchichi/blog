@@ -11,21 +11,32 @@
         <li>
             <div class="comment-main-level">
                 <!-- Avatar -->
-                <div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" alt=""></div>
                 <!-- Contenedor del Comentario -->
-                <div class="comment-box">
+                <div class="comment-box" *ngFor="let c of p.comment">
                     <div class="comment-head">
                         <h6 class="comment-name by-author"><a href="http://creaticode.com/blog">Agustin Ortiz</a></h6>
                         <span>hace 20 minutos</span>
                         <i class="fa fa-reply"></i>
                         <i class="fa fa-heart"></i>
+                        <div class="comment-content" >
+                
+                            {{c.content}}
+                        </div>
                     </div>
-                    <div class="comment-content">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
-                    </div>
+                    
+                    
                 </div>
             </div>
             <!-- Respuestas de los comentarios -->
         </li>
     </ul>
+    <form [formGroup]="cmtform">
+        <div class="input-group mb-3">
+            <textarea formControlName="content" type="text" class="form-control"  aria-label="Recipient's username" aria-describedby="basic-addon2"></textarea>
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button" (click)="ajouter(p.postId)">comment</button>
+            </div>
+          </div>
+    </form>
+
 </div>
