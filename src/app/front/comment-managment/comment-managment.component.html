@@ -1,4 +1,5 @@
 <!-- Contenedor Principal -->
+<app-navbar></app-navbar>
 <div class="comments-container"*ngFor="let p of listofpost;let indexOfelement=index;">
     <img src="http://localhost:8089/File/file/{{p?.files?.id}}" style="height: 250px;width: 400px;">
             <h1>{{p.title}}</h1>
@@ -40,3 +41,4 @@
     </form>
 
 </div>
+<app-footer></app-footer>
