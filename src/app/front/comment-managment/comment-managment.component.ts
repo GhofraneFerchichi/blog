@@ -36,7 +36,7 @@ ajouter(post:Number){
   console.log(this.cmtform.value);
   this.ps.addcomentaire(post,1,this.cmtform.value).subscribe(
   data=>{
-      this.route.navigate(['/commentpost'])
+    window.location.reload();
       }
    
   );
