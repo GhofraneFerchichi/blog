@@ -18,6 +18,11 @@ export class PostServiceService {
   getfiledetail="http://localhost:8089/File/filesdetail";
   getfiledeposturl="http://localhost:8089/File/filesdearticle";
   deletefiles="http://localhost:8089/File/delete-file";
+  /////////////////////////////////////////////////
+  addlikeurl="http://localhost:8089/post/addLike";
+  adddislikeurl="http://localhost:8089/post/addDislike";
+  nbrlikeurl="http://localhost:8089/post/nbrLike";;
+  nbrdislikeurl="http://localhost:8089/post/nbrDisLike";;
   constructor(private http : HttpClient) { }
 
   getPost(): Observable<Post[]>{
@@ -53,5 +58,20 @@ export class PostServiceService {
   }
   deletefile(id:Number,idp:Number): any{
     return this.http.delete(`${this.deletefiles}/${id}/${idp}`);
+  }
+  ////////////////////////::::
+  addlike(idp:Number, idu:Number,post:Post):Observable<Post>{
+    return this.http.put<Post>(`${this.addlikeurl}/${idp}/${idu}`,post);
+  }
+  addDislike(idp:Number, idu:Number,post:Post):Observable<Post>{
+    return this.http.put<Post>(`${this.adddislikeurl}/${idp}/${idu}`,post);
+  }
+  getlike(idp:Number): Observable<Number>{
+    return this.http.get<Number>(`${this.nbrlikeurl}/${idp}`);
+
+  }
+  getdislike(idp:Number): Observable<Number>{
+    return this.http.get<Number>(`${this.nbrdislikeurl}/${idp}`);
+
   }
 }

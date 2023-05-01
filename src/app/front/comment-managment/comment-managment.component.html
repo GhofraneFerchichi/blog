@@ -1,9 +1,11 @@
 <!-- Contenedor Principal -->
-<div class="comments-container">
-    <div class="card">
-        <h1>zied</h1>
-        <img alt="" style="float: left;">
-    </div>
+<div class="comments-container"*ngFor="let p of listofpost;let indexOfelement=index;">
+    <img src="http://localhost:8089/File/file/{{p?.files?.id}}" style="height: 250px;width: 400px;">
+            <h1>{{p.title}}</h1>
+            <h2>{{p.content}}</h2>
+            <h5 > created :{{p.created_At}}</h5>
+          <button (click)="addlike(p)" class="btn btn-primary"> <i class="fa fa-thumbs-up"></i>Like  {{nbrlike[indexOfelement]}}</button>
+          <button (click)="adddislike(p)" class="btn btn-primary" style="margin-left: 10px;" > <i class="fas fa-thumbs-down"></i>Dislike {{nbrdislike[indexOfelement]}}</button>
 
     <ul id="comments-list" class="comments-list">
         <li>
