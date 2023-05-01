@@ -18,8 +18,7 @@
                   <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">title</label>
                     <input type="email" class="form-control" id="exampleFormControlInput1" formControlName="title" >
-                    <label *ngIf="  postform.get('title')!.hasError('required')"
-                    for="float-input-invalid" style="color: red;"> <a style="font-weight: bold;">&#x2022;</a>required</label>
+                    <div class="alert alert-danger" *ngIf="  postform.get('title')!.hasError('required')">required</div>
                   
                   </div>
                   <br>
@@ -27,8 +26,7 @@
                   <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">title</label>
                     <input type="email" class="form-control" id="exampleFormControlInput1" formControlName="content" >
-                    <label *ngIf="  postform.get('content')!.hasError('required')"
-                    for="float-input-invalid"style="color: red;"> <a style="font-weight: bold;">&#x2022;</a>required</label>
+                    <div class="alert alert-danger" *ngIf="  postform.get('content')!.hasError('required')">required</div>
                   </div>
                   <br>
                   <br>
@@ -37,9 +35,9 @@
                   <div class="mb-3">
                     <label for="formFile" class="form-label">Upload your Image</label>
                     <input class="form-control" type="file" id="formFile" formControlName="file" (change)="selectFile($event);upload()">
-                    <div *ngIf="file==null" style="color: red;"><a style="font-weight: bold;">&#x2022;</a> required
-                      and name of
-                      image must be simple</div>
+                      <div class="alert alert-danger" *ngIf="file==null">required
+                        and name of
+                        image must be simple</div>
                   </div>
 
                 </form>
