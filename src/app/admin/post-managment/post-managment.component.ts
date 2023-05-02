@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Post } from 'src/app/models/post';
 import { PostServiceService } from 'src/app/services/post-service.service';
-
+import { EditorComponent } from '@tinymce/tinymce-angular';
 @Component({
   selector: 'app-post-managment',
   templateUrl: './post-managment.component.html',

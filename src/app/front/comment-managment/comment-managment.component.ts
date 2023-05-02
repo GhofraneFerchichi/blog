@@ -15,7 +15,9 @@ export class CommentManagmentComponent implements OnInit {
   listofcmt:Comment[][];
   listofpost:Post[];
   nbrlike:Number[]=[]
-  nbrdislike:Number[]=[]
+  nbrdislike:Number[]=[];
+  userid=1
+ // indexOfelement: number;
   constructor(private ps:PostServiceService,private formBuilder: FormBuilder,private route:Router) { }
 
   ngOnInit(): void {
@@ -34,13 +36,23 @@ export class CommentManagmentComponent implements OnInit {
 }
 ajouter(post:Number){
   console.log(this.cmtform.value);
-  this.ps.addcomentaire(post,1,this.cmtform.value).subscribe(
+  this.ps.addcomentaire(post,this.userid,this.cmtform.value).subscribe(
   data=>{
     window.location.reload();
       }
    
   );
 
+}
+supprimer(post :any){
+
+  this.ps.deletePost(post.postId).subscribe(()=>this.ps.getPost().subscribe(
+    data=>{
+      this.listofpost=data
+      
+    }
+  )
+  );
 }
 getcmtbypos(post:any){
   this.ps.getcmtbypost(post).subscribe(
@@ -56,6 +68,7 @@ getcmtbypos(post:any){
         this.listofpost=data;
         this.isReady=true;
         for(let i of this.listofpost){
+          console.log(i.user.id)
           let index=this.listofpost.indexOf(i);
           this.ps.getlike(this.listofpost[index].postId).subscribe(
             res=>{

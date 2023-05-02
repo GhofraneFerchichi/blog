@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FileDB } from 'src/app/models/fileDB';
 import { Post } from 'src/app/models/post';
 import { PostServiceService } from 'src/app/services/post-service.service';
+import { EditorComponent, EditorModule } from '@tinymce/tinymce-angular';
+
 
 @Component({
   selector: 'app-add-post',
@@ -16,10 +18,15 @@ export class AddPostComponent implements OnInit {
   selectedFiles: FileList ;
   file: FileDB;
   post:Post;
+ 
+
   constructor(private ps:PostServiceService,private formBuilder: FormBuilder,private router:Router) { }
 
   ngOnInit(): void {
-    this.initForm()
+
+      this.initForm();
+    
+    
   }
   initForm() {
     this.postform = this.formBuilder.group({
@@ -32,6 +39,7 @@ export class AddPostComponent implements OnInit {
     data=>{console.log(this.postform)}
   )
 }
+
 ajouter(){
   console.log(this.postform.value);
   this.ps.ajoutPost(this.postform.value).subscribe(

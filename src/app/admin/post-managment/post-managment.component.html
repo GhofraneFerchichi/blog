@@ -9,7 +9,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title" style="margin-left: 40%; font-size:xx-large; color: coral;"> Products
+                            <h4 class="card-title" style="margin-left: 40%; font-size:xx-large; color: coral;"> Posts
                             </h4>
                         </div>
                         <div class="col-md-2">
@@ -71,14 +71,13 @@
 
                                             <td>
                                                 <button data-bs-toggle="modal" 
-                                                    data-bs-target="#exampleModal" class="btn btn-outline-info"><i
-                                                        class="fa fa-info"></i> afficher</button>
+                                                    data-bs-target="#exampleModal"  [routerLink]="['affichpost/', p.postId ]" class="btn btn-outline-info"><i
+                                                        class="fa fa-info" ></i> afficher</button>
                                                         &nbsp;
+
                                                 <button type="button" (click)="supprimer(p)"
                                                     class="btn btn-danger"><i class="fa fa-trash"></i> supprimer</button>
-                                                    &nbsp;
-                                                    <button type="button" [routerLink]="['editPost/', p.postId ]"
-                                                    class="btn btn-warning"><i class="fa fa-pencil"></i> modifier</button>
+                                                   
                                             </td>
 
                                         </tr>

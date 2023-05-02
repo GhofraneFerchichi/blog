@@ -22,12 +22,13 @@
                   
                   </div>
                   <br>
-                  <br>
+                  <br> 
                   <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">title</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput1" formControlName="content" >
-                    <div class="alert alert-danger" *ngIf="  postform.get('content')!.hasError('required')">required</div>
-                  </div>
+                   
+                    <label class="post-content">Body</label>
+                    <editor  [formControlName]="'content'" [init]="{plugins:'link'}"></editor> 
+                     <div class="alert alert-danger" *ngIf="  postform.get('content')!.hasError('required')">required</div>
+                 </div>
                   <br>
                   <br>
 

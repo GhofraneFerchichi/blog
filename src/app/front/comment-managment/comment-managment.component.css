@@ -6,7 +6,7 @@
  ----------------------------------*/
  * {
    margin: 0;
-   padding: 0;
+   padding: 50;
    -webkit-box-sizing: border-box;
    -moz-box-sizing: border-box;
    box-sizing: border-box;
@@ -32,6 +32,7 @@ body {
 .comments-container {
   margin: 60px auto 15px;
   width: 768px;
+  padding: 300;
 }
 
 .comments-container h1 {
@@ -295,3 +296,23 @@ button{
    color: red;
    border: solid 1px;
  }
+ .posts-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-left: 60;
+  padding: 90;
+}
+.post-image{
+ text-align: center;
+}
+.post {
+  
+  width: calc(50% - 10px);
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  padding: 90px;
+}
+img {
+  background: none;
+}

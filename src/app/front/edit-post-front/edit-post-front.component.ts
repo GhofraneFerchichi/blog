@@ -6,12 +6,11 @@ import { Post } from 'src/app/models/post';
 import { PostServiceService } from 'src/app/services/post-service.service';
 
 @Component({
-  selector: 'app-edit-post',
-  templateUrl: './edit-post.component.html',
-  styleUrls: ['./edit-post.component.css']
+  selector: 'app-edit-post-front',
+  templateUrl: './edit-post-front.component.html',
+  styleUrls: ['./edit-post-front.component.css']
 })
-export class EditPostComponent implements OnInit {
-
+export class EditPostFrontComponent implements OnInit {
   selectedFiles: FileList;
   currentFile: any;
   post: Post;

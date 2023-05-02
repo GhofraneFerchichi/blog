@@ -24,6 +24,7 @@ import { AddPostComponent } from './admin/post-managment/add-post/add-post.compo
 import { PostManagmentComponent } from './admin/post-managment/post-managment.component';
 import { EditPostComponent } from './admin/post-managment/edit-post/edit-post.component';
 import { CommentManagmentComponent } from './front/comment-managment/comment-managment.component';
+import { AffichPostComponent } from './admin/affich-post/affich-post.component';
 
 const routes: Routes = [
   { path: 'products/:id', component: SingleProductComponent },
@@ -52,7 +53,8 @@ const routes: Routes = [
  
   //Post Paths:
   { path: 'addPost', component: AddPostComponent },
-  { path: 'listPost/editPost/:id', component: EditPostComponent },
+  { path: 'commentpost/editPost/:id', component: EditPostComponent },
+  { path: 'listPost/affichpost/:id', component: AffichPostComponent },
   { path: 'listPost', component: PostManagmentComponent },
   { path: 'commentpost', component: CommentManagmentComponent },
   { path: 'showpost', component: PostshowComponent },

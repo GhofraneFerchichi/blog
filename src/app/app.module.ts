@@ -32,7 +32,6 @@ import { ListLibcatComponent } from './admin/list-libcat/list-libcat.component';
 import { UpdateCourseComponent } from './update-course/update-course.component';
 import { CourseClientComponent } from './front/course-client/course-client.component';
 import { CourseListClientComponent } from './front/course-list-client/course-list-client.component';
-import { AddpostComponent } from './admin/addpost/addpost.component';
 import { ListpostComponent } from './admin/listpost/listpost.component';
 import { PostshowComponent } from './front/postshow/postshow.component';
 import { PostcommentComponent } from './front/postcomment/postcomment.component';
@@ -40,8 +39,9 @@ import { PostManagmentComponent } from './admin/post-managment/post-managment.co
 import { AddPostComponent } from './admin/post-managment/add-post/add-post.component';
 import { EditPostComponent } from './admin/post-managment/edit-post/edit-post.component';
 import { CommentManagmentComponent } from './front/comment-managment/comment-managment.component';
-
-
+import { EditorModule } from '@tinymce/tinymce-angular';
+import { AffichPostComponent } from './admin/affich-post/affich-post.component';
+import { EditPostFrontComponent } from './front/edit-post-front/edit-post-front.component';
 
 // @ts-ignore
 // @ts-ignore
@@ -70,14 +70,15 @@ import { CommentManagmentComponent } from './front/comment-managment/comment-man
     UpdateCourseComponent,
     CourseClientComponent,
     CourseListClientComponent,
-    AddpostComponent,
     ListpostComponent,
     PostshowComponent,
     PostcommentComponent,
     PostManagmentComponent,
-    AddPostComponent,
     EditPostComponent,
     CommentManagmentComponent,
+      AddPostComponent,
+      AffichPostComponent,
+      EditPostFrontComponent
   ],
   imports: [
     BrowserModule,
@@ -88,6 +89,7 @@ import { CommentManagmentComponent } from './front/comment-managment/comment-man
     AppRoutingModule,
     NgxPaginationModule,
     RouterModule.forRoot([]),
+    EditorModule
 
 
   ],
